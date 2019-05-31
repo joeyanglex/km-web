@@ -21,6 +21,10 @@ public class JSONUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(JSONUtil.class);
 
+    private JSONUtil() {
+
+    }
+
     /**
      * Transfer object to JSON string
      *
@@ -41,8 +45,7 @@ public class JSONUtil {
         try {
             result = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            logger.error("Generate JSON String error!" + e.getMessage());
-            e.printStackTrace();
+            logger.error("Generate JSON String error,{}!", e.getMessage(), e);
         }
         return result;
     }

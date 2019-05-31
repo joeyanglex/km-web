@@ -1,6 +1,9 @@
 package top.keepmoving.kmweb.web.quartz.domain;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import top.keepmoving.kmweb.common.CustomerDateAndTimeDeserialize;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,7 +18,7 @@ import java.util.Date;
 public class ScheduleJob implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String className;
@@ -36,8 +39,12 @@ public class ScheduleJob implements Serializable {
 
 	private String description;
 
+	@JsonDeserialize(using = CustomerDateAndTimeDeserialize.class)
+	@Temporal(value = TemporalType.DATE)
 	private Date createTime;
 
+	@JsonDeserialize(using = CustomerDateAndTimeDeserialize.class)
+	@Temporal(value = TemporalType.DATE)
 	private Date lastUpdateTime;
 
 	public Long getId() {
