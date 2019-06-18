@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * <p>@Date:2019-05-23
  * <p>@Description:
  */
-@ResponseStatus(HttpStatus.NOT_FOUND)
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Page Not Found")
 public class ServiceException extends Exception {
 
     public ServiceException(String msg, Exception e) {
